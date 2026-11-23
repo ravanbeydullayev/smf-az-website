@@ -1,0 +1,82 @@
+---
+import { mk, type Lang } from '../i18n/i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = mk(lang);
+const sitekey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY || '1x00000000000000000000AA';
+---
+<section class="hero"><div class="wrap hg"><div>
+<p class="kick wipe">{t("SMF 4 tezliklə Bakıda")}</p>
+<h1><span class="wipe">{t("Strateji")}</span><span class="wipe" style="--dl:.12s">{t("Marketinq")}</span><span class="wipe" style="--dl:.24s">{t("Forumu")}</span></h1>
+<p class="lead wipe" style="--dl:.4s">{t("Doqquz spiker, üç panel və marketoloqlarla dolu bir salon. Ən yaxşı fikirlər çox vaxt kuluarda doğulur.")}</p>
+<div class="acts wipe" style="--dl:.55s"><a class="btn o" href="#bilet">{t("Bilet al")}</a><a class="tl" href="#forumlar">{t("Keçmiş forumlara bax")}</a></div>
+<p class="small wipe" style="--dl:.65s">{t("SMF 4 yaxında keçiriləcək. Tarix elan olunanda ilk sən biləcəksən.")}</p>
+</div><div class="wall" id="wall" aria-hidden="true"></div></div></section>
+
+<section class="sec" id="haqqinda"><div class="wrap">
+<div class="ab"><div><h2 class="wipe">{t("Qarışıq fikir bura girir, strategiya çıxır.")}</h2>
+<p class="sub wipe" style="--dl:.15s">{t("SMF marketinq peşəkarlarını, biznes liderlərini və gələcəyin marketoloqlarını bir salonda toplayır. Burada nəzəriyyə yox, işləyən təcrübə danışılır.")}</p></div>
+<svg class="morph" viewBox="0 0 300 160" role="img" aria-label={t("Qarışıq xətt düzələrək yuxarı qalxan strategiya oxuna çevrilir")}>
+<path id="mp" d="M10 90 C60 -20,90 200,140 60 S220 -10,280 90" fill="none" stroke="#EE6611" stroke-width="6" stroke-linecap="round"><animate id="ma" attributeName="d" dur="2.4s" begin="indefinite" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.6 0 0.2 1" values="M10 90 C60 -20,90 200,140 60 S220 -10,280 90;M10 140 C70 125,100 100,150 85 S230 40,280 20"/></path>
+<g class="star"><path d="M0 -14L3.5 -3.5L14 0L3.5 3.5L0 14L-3.5 3.5L-14 0L-3.5 -3.5Z" fill="#EE6611"/></g>
+<text x="10" y="155">{t("Fikir")}</text><text x="238" y="155">{t("Strategiya")}</text></svg></div>
+<ol class="steps"><li style="--dl:0s"><h3>{t("Yeni baxışlar")}</h3><p>{t("Trendlər dəyişir. Burada onlara bir addım öncə baxırsan.")}</p></li>
+<li style="--dl:.3s"><h3>{t("Canlı tanışlıqlar")}</h3><p>{t("Kofe fasiləsində başlayan söhbət növbəti layihəyə çevrilə bilər.")}</p></li>
+<li style="--dl:.6s"><h3>{t("Tətbiq olunan təcrübə")}</h3><p>{t("Slayd yox, real kampaniyalar, rəqəmlər və səhvlərdən dərslər.")}</p></li></ol>
+</div></section>
+
+<section class="sec dark" id="forumlar"><div class="wrap">
+<h2 class="wipe">{t("Hər forum öncəkindən böyük oldu.")}</h2>
+<p class="sub wipe" style="--dl:.15s">{t("Hər nöqtə bir iştirakçıdır. Hər forumda 3 panel və 9 spiker olub.")}</p>
+<div class="fcs">
+<article class="fc" data-n="100" data-cols="10" data-pat="seq"><div class="dots"></div><div class="cnt">0<small>{t("iştirakçı")}</small></div><h3>SMF 01</h3><p>{t("29 İyun 2025, KAOS")}</p><p class="th">{t("Strateji Düşün Fərq Yarat")}</p></article>
+<article class="fc" data-n="300" data-cols="20" data-pat="rad"><div class="dots"></div><div class="cnt">0<small>{t("iştirakçı")}</small></div><h3>SMF 02</h3><p>{t("28 Sentyabr 2025, Radisson Baku Hotel")}</p><p class="th">{t("Qlobal Brendlər, Yerli Dildə")}</p></article>
+<article class="fc" data-n="400" data-cols="20" data-pat="swp"><div class="dots"></div><div class="cnt">0<small>{t("iştirakçı")}</small></div><h3>SMF 03</h3><p>{t("24 May 2026, Nizami Kino Mərkəzi")}</p><p class="th">{t("Marketinqin Yeni Dövrü")}</p></article>
+</div></div></section>
+
+<section class="sec" id="komanda"><div class="wrap">
+<h2 class="wipe">{t("Hər şeyin arxasında bu insanlar dayanır.")}</h2>
+<p class="sub wipe" style="--dl:.15s">{t("Kuluarda görünməyən, amma forumu mümkün edən komanda.")}</p>
+<div class="team"><article class="pc"><img src="__T1__" alt="Rəvan Beydullayev"><b>Rəvan Beydullayev</b><span>{t("Təsisçi")}</span></article><article class="pc"><img src="__T2__" alt="Sadiq Məmmədli"><b>Sadiq Məmmədli</b><span>{t("Layihə Rəhbəri")}</span></article><article class="pc"><img src="__T3__" alt="Fatimə Cəlilova"><b>Fatimə Cəlilova</b><span>{t("Marketinq Rəhbəri")}</span></article></div></div></section>
+
+<section class="sec soft" id="aletler"><div class="wrap">
+<h2 class="wipe">{t("Forum günü gözləmə, alətlər hər gün səninlədir.")}</h2>
+<p class="sub wipe" style="--dl:.15s">{t("Pulsuz, qeydiyyatsız, brauzerdə işləyir.")}</p>
+<div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="calc">{t("Reklam hesablayıcısı")}</button><button role="tab" aria-selected="false" data-t="utm">UTM link</button><button role="tab" aria-selected="false" data-t="ab">A/B test</button><button role="tab" aria-selected="false" data-t="soc">{t("Sosial media ölçüləri")}</button><button role="tab" aria-selected="false" data-t="qr">{t("QR kod")}</button><button role="tab" aria-selected="false" data-t="cal">{t("Marketinq təqvimi")}</button><button role="tab" aria-selected="false" data-t="gl">{t("Lüğət")}</button></div>
+<div class="panel" id="t-calc"><div class="fl g3" id="calc">
+<label>{t("Reklam xərci (₼)")}<input name="s" type="number" inputmode="decimal" min="0" step="any" value="1000"></label>
+<label>{t("Gəlir (₼)")}<input name="r" type="number" inputmode="decimal" min="0" step="any" value="3500"></label>
+<label>{t("Sifariş sayı")}<input name="o" type="number" inputmode="decimal" min="0" step="any" value="70"></label>
+<label>{t("Göstəriş (impression)")}<input name="i" type="number" inputmode="decimal" min="0" step="any" value="120000"></label>
+<label>{t("Klik sayı")}<input name="c" type="number" inputmode="decimal" min="0" step="any" value="2400"></label></div>
+<dl class="res" aria-live="polite"><div><dt>ROAS</dt><dd data-o="roas">—</dd></div><div><dt>ROI</dt><dd data-o="roi">—</dd></div><div><dt>{t("CPA, sifariş qiyməti")}</dt><dd data-o="cpa">—</dd></div><div><dt>CTR</dt><dd data-o="ctr">—</dd></div><div><dt>{t("CPC, klik qiyməti")}</dt><dd data-o="cpc">—</dd></div><div><dt>{t("CPM, 1000 göstəriş")}</dt><dd data-o="cpm">—</dd></div><div><dt>{t("Konversiya (kliklərdən)")}</dt><dd data-o="cvr">—</dd></div></dl>
+<p class="note">{t("ROI gəlirdən xərci çıxmaqla hesablanır, maya dəyəri nəzərə alınmır.")}</p></div>
+<div class="panel" id="t-utm" hidden><div class="fl g2" id="utm">
+<label>{t("Sayt linki")}<input name="url" placeholder="smf.az"></label><label>{t("Mənbə (source)")}<input name="source" placeholder="instagram"></label>
+<label>{t("Kanal (medium)")}<input name="medium" placeholder="social"></label><label>{t("Kampaniya (campaign)")}<input name="campaign" placeholder="smf4_xeberdar"></label>
+<label>{t("Açar söz (term), könüllü")}<input name="term"></label><label>{t("Məzmun (content), könüllü")}<input name="content"></label></div>
+<label style="margin-top:14px">{t("Hazır link")}<textarea id="utmo" rows="3" readonly></textarea></label>
+<div class="row" style="margin-top:12px"><button class="btn o" id="cp" type="button">{t("Kopyala")}</button></div></div>
+<div class="panel" id="t-ab" hidden><div class="fl g2" id="ab">
+<label>{t("A variantı: ziyarətçi")}<input name="av" type="number" min="0" step="1" value="5000"></label><label>{t("A variantı: nəticə (satış, klik)")}<input name="ac" type="number" min="0" step="1" value="150"></label>
+<label>{t("B variantı: ziyarətçi")}<input name="bv" type="number" min="0" step="1" value="5000"></label><label>{t("B variantı: nəticə")}<input name="bc" type="number" min="0" step="1" value="190"></label></div>
+<dl class="res" aria-live="polite"><div><dt>{t("A konversiyası")}</dt><dd data-o="pa">—</dd></div><div><dt>{t("B konversiyası")}</dt><dd data-o="pb">—</dd></div><div><dt>{t("Fərq")}</dt><dd data-o="up">—</dd></div><div><dt>{t("Güvən səviyyəsi")}</dt><dd data-o="cf">—</dd></div></dl>
+<p class="verd" data-o="vd"></p><p class="note">{t("İki nisbətin z-testi ilə hesablanır. Nəticə üçün hər variantda kifayət qədər ziyarətçi toplanmalıdır.")}</p></div>
+<div class="panel" id="t-soc" hidden><table><tr><th>Format</th><th>{t("Ölçü")}</th></tr><tr><td>Instagram post</td><td>1080×1350 (4:5)</td></tr><tr><td>{t("Instagram kvadrat")}</td><td>1080×1080</td></tr><tr><td>Story, Reels, TikTok</td><td>1080×1920 (9:16)</td></tr><tr><td>Facebook post</td><td>1200×630</td></tr><tr><td>LinkedIn post</td><td>1200×627</td></tr><tr><td>X post</td><td>1600×900</td></tr><tr><td>{t("YouTube önizləmə")}</td><td>1280×720</td></tr></table>
+<label>{t("Simvol sayğacı")}<select id="lim"><option value="2200">{t("Instagram şərh (2200)")}</option><option value="280">X post (280)</option><option value="3000">LinkedIn post (3000)</option><option value="100">{t("YouTube başlıq (100)")}</option></select></label>
+<label style="margin-top:10px">{t("Mətn")}<textarea id="txt" rows="4" placeholder={t("Postunun mətnini bura yaz")}></textarea></label>
+<div class="meter" id="mt"><i></i></div><p class="note" id="cn">0 / 2200</p><p class="note">{t("Platforma qaydaları dəyişə bilər, dərc etməzdən əvvəl yoxla.")}</p></div>
+<div class="panel" id="t-qr" hidden><div class="qrw"><div><div class="fl"><label>{t("Link və ya mətn")}<input id="qrt" value="https://smf.az"></label></div><label class="ck2"><input type="checkbox" id="qrl" checked>{t("Mərkəzdə SMF loqosu")}</label><button class="btn o" id="qrd" type="button">{t("PNG yüklə")}</button><p class="note">{t("Loqolu QR kodu istifadə etməzdən əvvəl telefonla yoxla.")}</p></div><canvas id="qrc" width="512" height="512" role="img" aria-label={t("QR kod")}></canvas></div></div>
+<div class="panel" id="t-cal" hidden><div class="cal" id="cal"></div><p class="note"><i class="mk"></i>{t("Narıncı nöqtə marketinq kampaniyası günüdür.")}</p><p class="note">{t("Dini bayramların (Ramazan, Qurban) tarixi hər il dəyişir. Rəsmi iş günü qərarlarını ildən-ilə yoxla.")}</p></div>
+<div class="panel" id="t-gl" hidden><label>{t("Axtar")}<input id="gq" placeholder="ROAS, brif, funnel"></label><dl class="gl" id="gl"></dl></div>
+</div></section>
+
+<section class="sec dark" id="sponsor"><div class="wrap">
+<h2 class="wipe">{t("Loqonuz forumun ən çox baxılan yerlərində olsun.")}</h2>
+<p class="sub wipe" style="--dl:.15s">{t("Zonanı seç, nə yerləşdirmək istədiyini işarələ və sorğu göndər. Şərtləri sənə təqdim edək.")}</p>
+<div class="sp"><svg class="iso" id="iso" viewBox="0 0 420 330" role="group" aria-label={t("Forum məkanının 3D sxemi")}></svg>
+<div class="zi"><h3 id="zt"></h3><p id="zd"></p><div class="pills" id="zp"></div><div class="opts" id="zo"></div><p class="sm" id="zs"></p>
+<form class="f" data-api="/api/sponsor"><div class="fl"><label>{t("Şirkət adı")}<input name="company" required maxlength="120" autocomplete="organization"></label><label>{t("Əlaqə şəxsi")}<input name="contact" required maxlength="120" autocomplete="name"></label><label>{t("E-poçt")}<input name="email" type="email" required maxlength="200" autocomplete="email"></label></div>
+<label class="ck"><input type="checkbox" name="consent" required>{t("Gizlilik razılaşması ilə razıyam")}</label><input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="cf-turnstile" data-sitekey={sitekey}></div><button class="btn o" type="submit">{t("Sponsorluq sorğusu göndər")}</button>
+<p class="ok" hidden></p><p class="err" hidden></p></form>
+<p class="note" style="color:#CBE7D4">{t("Variantlar təklifdir. Şərtlər və qiymətlər sorğudan sonra göndəriləcək.")}</p></div></div></div></section>

@@ -1,0 +1,8 @@
+name = "smf-az-website"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-11-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "smf-az"
+database_id = "REPLACE_WITH_D1_ID"

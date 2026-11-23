@@ -1,0 +1,71 @@
+---
+import '../styles/global.css';
+import Sprite from '../components/Sprite.astro';
+import { mk, url, nav, DESC_AZ, type Lang } from '../i18n/i18n';
+import enJs from '../i18n/en-js.json';
+interface Props { lang: Lang; page: 'home' | 'tickets' | 'privacy'; title?: string; forms?: boolean; qr?: boolean }
+const { lang, page, title, forms = false, qr = false } = Astro.props;
+const t = mk(lang);
+const site = Astro.site!;
+const abs = (l: Lang) => new URL(url(l, page), site).href;
+const name = t('Strateji Marketinq Forumu');
+const pageTitle = title ? `${t(title)} | ${name}` : `${name} | ${t('SMF 4 tezliklə Bakıda')}`;
+const desc = t(DESC_AZ);
+const home = url(lang, 'home');
+const og = new URL('/og.jpg', site).href;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={desc} />
+    <meta name="theme-color" content="#15633D" />
+    <link rel="canonical" href={abs(lang)} />
+    <link rel="alternate" hreflang="az" href={abs('az')} />
+    <link rel="alternate" hreflang="en" href={abs('en')} />
+    <link rel="alternate" hreflang="x-default" href={abs('az')} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={abs(lang)} />
+    <meta property="og:image" content={og} />
+    <meta property="og:locale" content={lang === 'az' ? 'az_AZ' : 'en_US'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <noscript><style>.wipe{clip-path:none!important;transform:none!important}</style></noscript>
+  </head>
+  <body id="top">
+    <Sprite />
+    <a class="skip" href="#main">{t('Məzmuna keç')}</a>
+    <header class="top"><div class="wrap bar">
+      <a href={home} aria-label={name}><svg class="logo"><use href="#smf"></use></svg></a>
+      <nav class="nav" aria-label={t('Əsas')}>{nav.map(([id, label]) => <a href={`${home}#${id}`}>{t(label)}</a>)}</nav>
+      <div class="lang">{(['az', 'en'] as Lang[]).map((l) => <a href={url(l, page)} hreflang={l} lang={l} aria-current={l === lang ? 'true' : undefined}>{l.toUpperCase()}</a>)}</div>
+      <a class="btn" href={url(lang, 'tickets')}>{t('Bilet al')}</a>
+      <details class="mn"><summary>{t('Menyu')}</summary><div>{nav.map(([id, label]) => <a href={`${home}#${id}`}>{t(label)}</a>)}</div></details>
+    </div></header>
+    <main id="main"><slot /></main>
+    <footer class="ft"><div class="wrap">
+      <div><svg class="logo" style="height:52px;width:52px"><use href="#smf"></use></svg></div>
+      <div>{t('Təşkilatçı')}<br /><span class="ama"><img src="/brand/ama-logo.jpg" width="420" height="235" alt={t('Azərbaycan Marketinq Assosiasiyası loqosu')} /></span></div>
+      <div>© {new Date().getFullYear()} {t('Strateji Marketinq Forumu.')}<br /><a class="lk" href={url(lang, 'privacy')}>{t('Gizlilik razılaşması')}</a></div>
+    </div></footer>
+    <div class="cons" id="cons" hidden role="dialog" aria-label={t('Gizlilik razılaşması')}>
+      <h3>{t('Gizlilik razılaşması')}</h3>
+      <p>{t('Bu sayt forum barədə səninlə əlaqə saxlamaq üçün formalara yazdığın məlumatları (ad, e-poçt) emal edir. Davam etməklə bununla razılaşırsan.')}</p>
+      <ul id="cd" hidden><li>{t('Yalnız formalara özün yazdığın məlumatlar toplanır.')}</li><li>{t('Məlumat forum və sponsorluq barədə əlaqə üçün istifadə olunur.')}</li><li>{t('Məlumatın silinməsini istəyə bilərsən.')}</li></ul>
+      <div class="row"><button class="btn" id="ok" type="button">{t('Razıyam')}</button><button class="lk" id="mr" type="button">{t('Ətraflı')}</button><a class="lk" href={url(lang, 'privacy')}>{t('Tam mətn')}</a></div>
+    </div>
+    {lang === 'en' && <script is:inline set:html={`window.__EN=${JSON.stringify(enJs)}`}></script>}
+    {qr && <script is:inline src="/js/qrcode.js" defer></script>}
+    <script is:inline src="/js/site.js" defer></script>
+    {forms && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+  </body>
+</html>

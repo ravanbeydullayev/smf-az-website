@@ -1,0 +1,23 @@
+---
+import { mk, url, type Lang } from '../i18n/i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = mk(lang);
+const sitekey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY || '1x00000000000000000000AA';
+---
+<section class="tk"><div class="wrap">
+  <a class="tl" href={url(lang, 'home')}>{t('Ana səhifəyə qayıt')}</a>
+  <h1>{t('Biletlər hələ satışda deyil.')}</h1>
+  <p class="sub">{t('Bilet satışı SMF 4 dönəmində aktiv olacaq. Satış açılan kimi sənə ilk xəbər verəcəyik.')}</p>
+  <form class="f" data-api="/api/subscribe">
+    <div class="fl">
+      <label>{t('Ad')}<input name="name" required maxlength="100" autocomplete="name" /></label>
+      <label>{t('E-poçt')}<input name="email" type="email" required maxlength="200" autocomplete="email" /></label>
+    </div>
+    <label class="ck"><input type="checkbox" name="consent" required />{t('Gizlilik razılaşması ilə razıyam')}</label>
+    <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <div class="cf-turnstile" data-sitekey={sitekey}></div>
+    <button class="btn" type="submit">{t('Mənə xəbər ver')}</button>
+    <p class="ok" hidden></p><p class="err" hidden></p>
+  </form>
+</div></section>

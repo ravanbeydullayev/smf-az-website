@@ -1,0 +1,14 @@
+---
+import { mk, type Lang } from '../i18n/i18n';
+interface Props { lang: Lang }
+const t = mk(Astro.props.lang);
+---
+<section class="doc"><div class="wrap">
+  <h1>{t('Gizlilik razılaşması')}</h1>
+  <h2>{t('Hansı məlumat toplanır')}</h2>
+  <p>{t('Yalnız formalara özün yazdığın məlumatlar: ad, şirkət adı, e-poçt və sponsorluq seçimləri.')}</p>
+  <h2>{t('Nə üçün istifadə olunur')}</h2>
+  <p>{t('Forum və sponsorluq barədə səninlə əlaqə saxlamaq üçün. Məlumat üçüncü tərəflərə satılmır.')}</p>
+  <h2>{t('Məlumatın silinməsi')}</h2>
+  <p>{t('Məlumatının silinməsini istəsən, info@ama.org.az ünvanına yaz.')}</p>
+</div></section>
